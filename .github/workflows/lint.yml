@@ -1,0 +1,19 @@
+name: golangci-lint
+
+on: [push, pull_request]
+
+jobs:
+  golangci:
+    name: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.3
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3.6.0
+        with:
+            skip-go-installation: true
+            version: latest
+            args: --timeout 3m --verbose
